@@ -1,9 +1,9 @@
-  <div class="card">
+<div class="card">
   <div class="card-header">
     List your Property
   </div>
   <div class="card-body">
-    <form (ngSubmit)='onSubmit()' #Form="ngForm">
+    <form (ngSubmit)='onSubmit(Form)' #Form="ngForm">
       <div>
         <tabset #formTabs>
           <tab heading="Basic Info">
@@ -23,8 +23,8 @@
                 required
                 minlength="5">
                 <span *ngIf="!propName.valid && propName.touched" class="error-block">
-                  <span *ngIf="propName.errors.required">Please provide name</span>
-                  <span *ngIf="propName.errors.minlength">Name must be atleast 5 char long</span>
+                  <span *ngIf="propName.errors && propName.errors['required']">Please provide name</span>
+                  <span *ngIf="propName.errors && propName.errors['minlength']">Name must be atleast 5 char long</span>
                 </span>
               </div>
 
@@ -40,7 +40,7 @@
 
               <div class="form-group col-12">
                   <button type="button" class="btn btn-primary btn-block"
-                  (click)="selectTab(1)">Next</button>
+                  (click)="selectNext(1)">Next</button>
               </div>
           </tab>
 
@@ -72,10 +72,10 @@
 
               <div class="form-group col-12">
                 <button type="button" class="btn btn-primary btn-block"
-                (click)="selectTab(2)">Next</button>
+                (click)="selectNext(2)">Next</button>
 
                 <button type="button" class="btn btn-primary btn-block"
-                (click)="selectTab(0)">Back</button>
+                (click)="selectNext(0)">Back</button>
               </div>
           </tab>
 
@@ -103,10 +103,10 @@
 
               <div class="form-group col-12">
                 <button type="button" class="btn btn-primary btn-block"
-                (click)="selectTab(3)">Next</button>
+                (click)="selectNext(3)">Next</button>
 
                 <button type="button" class="btn btn-primary btn-block"
-                (click)="selectTab(1)">Back</button>
+                (click)="selectNext(1)">Back</button>
               </div>
           </tab>
 
@@ -147,10 +147,10 @@
 
             <div class="form-group col-12">
                 <button type="button" class="btn btn-primary btn-block"
-                (click)="selectTab(4)">Next</button>
+                (click)="selectNext(4)">Next</button>
 
                 <button type="button" class="btn btn-primary btn-block"
-                (click)="selectTab(2)">Back</button>
+                (click)="selectNext(2)">Back</button>
              </div>
           </tab>
 
@@ -163,7 +163,7 @@
             </div>
             <div class="form-group col-12">
               <button type="button" class="btn btn-primary btn-block"
-              (click)="selectTab(3)">Back</button>
+              (click)="selectNext(3)">Back</button>
             </div>
           </tab>
         </tabset>
